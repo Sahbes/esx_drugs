@@ -1,3 +1,5 @@
+-- Made by Sahbes
+
 Config = {}
 
 Config.Locale = 'en'
