@@ -1,4 +1,4 @@
--- Made by Sahbes
+-- Made by Sahbes for GTX
 
 Config = {}
 
