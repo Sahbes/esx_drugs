@@ -1,6 +1,7 @@
 # esx_drugs
 
-Based on esx_illigal\n
+Based on esx_illigal
+
 Added functions:
 - Max gather 
 - Changing locations
