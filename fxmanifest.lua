@@ -2,7 +2,8 @@ fx_version 'adamant'
 
 game 'gta5'
 
-author 'Sahbes'
+author 'Sahbes.lua#0111'
+
 description 'A resource written from esx_illigal but with lots of new functions'
 
 server_scripts {
