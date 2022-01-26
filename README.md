@@ -1,6 +1,6 @@
 # esx_drugs
 
-Based on esx_illigal
+Based on esx_illigal_drugs
 
 Added functions:
 - Max gather 
