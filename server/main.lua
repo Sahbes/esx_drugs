@@ -72,43 +72,41 @@ local poochloaded = false
 
 -- Get a random location
 Citizen.CreateThread( function()
-    while true do
 
-        -- Weed location
-        while not weedlocation do
-            Citizen.Wait(10)
-            local weedlocationmath = math.random(1, #Config.Locations["Weed"])
-            weedlocation = Config.Locations["Weed"][weedlocationmath].location
-            print('^2esx_drugs: current weed location is ' .. weedlocation .. '^0')
-            TriggerEvent('esx_drugs:server:execute', -1, 'Weed')
-        end
-
-        -- Coke location
-        while not cokelocation do
-            Citizen.Wait(10)
-            local cokelocationmath = math.random(1, #Config.Locations["Coke"])
-            cokelocation = Config.Locations["Coke"][cokelocationmath].location
-            print('^2esx_drugs: current coke location is ' .. cokelocation .. '^0')
-            TriggerEvent('esx_drugs:server:execute', -1, 'Coke')
-        end
-
-        -- Meth location
-        while not methlocation do
-            Citizen.Wait(10)
-            local methlocationmath = math.random(1, #Config.Locations["Meth"])
-            methlocation = Config.Locations["Meth"][methlocationmath].location
-            print('^2esx_drugs: current meth location is ' .. methlocation .. '^0')
-            TriggerEvent('esx_drugs:server:execute', -1, 'Meth')
-        end
-
-        -- Pooch loaded
-        while not poochloaded do
-            Citizen.Wait(10)
-            poochloaded = true
-            TriggerEvent('esx_drugs:server:execute', -1, 'Pooch')
-        end
+    -- Weed location
+    if not weedlocation then
         Citizen.Wait(10)
+        local weedlocationmath = math.random(1, #Config.Locations["Weed"])
+        weedlocation = Config.Locations["Weed"][weedlocationmath].location
+        print('^2esx_drugs: current weed location is ' .. weedlocation .. '^0')
+        TriggerEvent('esx_drugs:server:execute', -1, 'Weed')
     end
+
+    -- Coke location
+    if not cokelocation then
+        Citizen.Wait(10)
+        local cokelocationmath = math.random(1, #Config.Locations["Coke"])
+        cokelocation = Config.Locations["Coke"][cokelocationmath].location
+        print('^2esx_drugs: current coke location is ' .. cokelocation .. '^0')
+        TriggerEvent('esx_drugs:server:execute', -1, 'Coke')
+    end
+
+    -- Meth location
+    if not methlocation then
+        Citizen.Wait(10)
+        local methlocationmath = math.random(1, #Config.Locations["Meth"])
+        methlocation = Config.Locations["Meth"][methlocationmath].location
+        print('^2esx_drugs: current meth location is ' .. methlocation .. '^0')
+        TriggerEvent('esx_drugs:server:execute', -1, 'Meth')
+    end
+
+    -- Pooch loaded
+    if not poochloaded then
+        Citizen.Wait(10)
+        poochloaded = true
+        TriggerEvent('esx_drugs:server:execute', -1, 'Pooch')
+    end
+
 end)
 
 -- Execute event
@@ -159,6 +157,11 @@ AddEventHandler('esx_drugs:openDrugs', function(drugs)
                 UseAbleFarm = true
             end
         end
+        if not weedlocation then
+            local weedlocationmath = math.random(1, #Config.Locations["Weed"])
+            weedlocation = Config.Locations["Weed"][weedlocationmath].location
+            print('^2esx_drugs: current weed location is ' .. weedlocation .. '^0')
+        end
         TriggerClientEvent('esx_drugs:WeedLoaded', -1, weedlocation, UseAbleFarm,Config.RequiredCops["Weed"], Config.ProcessTime)
     elseif drugs == 'coke' then
         local UseAbleFarm = false
@@ -167,6 +170,11 @@ AddEventHandler('esx_drugs:openDrugs', function(drugs)
                 UseAbleFarm = true
             end
         end
+        if not cokelocation then
+            local cokelocationmath = math.random(1, #Config.Locations["Coke"])
+            cokelocation = Config.Locations["Coke"][cokelocationmath].location
+            print('^2esx_drugs: current coke location is ' .. cokelocation .. '^0')
+        end
         TriggerClientEvent('esx_drugs:CokeLoaded', -1, cokelocation, UseAbleFarm, Config.RequiredCops["Coke"], Config.ProcessTime)
     elseif drugs == 'meth' then
         local UseAbleFarm = false
@@ -174,6 +182,11 @@ AddEventHandler('esx_drugs:openDrugs', function(drugs)
             if methCounter < Config.MaxPickup["Meth"] then
                 UseAbleFarm = true
             end
+        end
+        if not methlocation then
+            local methlocationmath = math.random(1, #Config.Locations["Meth"])
+            methlocation = Config.Locations["Meth"][methlocationmath].location
+            print('^2esx_drugs: current meth location is ' .. methlocation .. '^0')
         end
         TriggerClientEvent('esx_drugs:MethLoaded', -1, methlocation, UseAbleFarm, Config.RequiredCops["Meth"], Config.ProcessTime)
     end
