@@ -8,6 +8,7 @@ Based on esx_illegal_drugs
 - Nice props
 - Simple system
 - Keeps RP exciting
+- Usable pooch
 
 **Anti-Cheating:**
 - Config can not be dumped
